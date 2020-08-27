@@ -1,22 +1,18 @@
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        Thread output = new SkrivUtTraad();
-        Thread input = new SkrivInnTraad();
+        Melding melding = new Melding("Hallo verden!");
+
+        SkrivUtTraad output = new SkrivUtTraad(melding);
+        SkrivInnTraad input = new SkrivInnTraad(melding);
 
         output.start();
         input.start();
 
-        boolean fortsette = true;
-        String utTekst;
+        output.join();
+        input.join();
 
-        while (fortsette) {
-            utTekst = ((SkrivInnTraad) input).input;
-            if (utTekst.equals("quit")) {
-                fortsette = false;
-            }
-            ((SkrivUtTraad) output).setOutput(utTekst);
-        }
+
     }
 }

@@ -1,12 +1,16 @@
 public class SkrivUtTraad extends Thread {
 
-    public String output = "Hallo Veden!";
+    Melding melding;
     private Boolean fortsette = true;
+
+    public SkrivUtTraad(Melding melding) {
+        this.melding = melding;
+    }
 
     @Override
     public void run() {
         while (fortsette) {
-            if (output.equals("quit")) {
+            if (melding.getTekst().equals("quit")) {
                 fortsette = false;
             }
             try {
@@ -14,13 +18,9 @@ public class SkrivUtTraad extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (!output.equals("quit")) {
-                System.out.println(output);
+            if (!melding.getTekst().equals("quit")) {
+                System.out.println(melding.getTekst());
             }
         }
-    }
-
-    public void setOutput(String output) {
-        this.output = output;
     }
 }
