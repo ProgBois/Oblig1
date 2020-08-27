@@ -10,9 +10,5 @@ public class Main {
         output.start();
         input.start();
 
-        output.join();
-        input.join();
-
-
     }
 }
