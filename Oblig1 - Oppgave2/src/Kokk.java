@@ -3,12 +3,12 @@ import java.util.Random;
 public class Kokk extends Thread {
 
     Rutsjebane rutsjebane;
-    int nummer;
+    int kokkNummer;
     Random random = new Random();
 
     public Kokk(Rutsjebane rutsjebane, int nummer) {
         this.rutsjebane = rutsjebane;
-        this.nummer = nummer;
+        this.kokkNummer = nummer;
     }
 
     @Override
@@ -25,14 +25,14 @@ public class Kokk extends Thread {
         int tid = random.nextInt(4) + 2;
         sleep(tid * 1000);
         if (rutsjebane.erFull()) {
-            System.out.println("### Kokk" + nummer + " er klar med en hamburger, men rutsjebanen er full. Venter! ###");
+            System.out.println("### Kokk" + kokkNummer + " er klar med en hamburger, men rutsjebanen er full. Venter! ###");
         }
         synchronized (rutsjebane) {
             while (rutsjebane.erFull()) {
                 rutsjebane.wait();
             }
             int burgerNr = rutsjebane.leggTilHamburger();
-            System.out.println("Kokk" + nummer + " legger på hamburger  (" + burgerNr + ") => " + rutsjebane.toString());
+            System.out.println("Kokk" + kokkNummer + " legger på hamburger  (" + burgerNr + ") => " + rutsjebane.toString());
             rutsjebane.notifyAll();
         }
     }
