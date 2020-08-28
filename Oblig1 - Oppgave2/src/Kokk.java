@@ -6,9 +6,9 @@ public class Kokk extends Thread {
     int kokkNummer;
     Random random = new Random();
 
-    public Kokk(Rutsjebane rutsjebane, int nummer) {
+    public Kokk(Rutsjebane rutsjebane, int kokkNummer) {
         this.rutsjebane = rutsjebane;
-        this.kokkNummer = nummer;
+        this.kokkNummer = kokkNummer;
     }
 
     @Override
@@ -31,8 +31,8 @@ public class Kokk extends Thread {
             while (rutsjebane.erFull()) {
                 rutsjebane.wait();
             }
-            int burgerNr = rutsjebane.leggTilHamburger();
-            System.out.println("Kokk" + kokkNummer + " legger på hamburger  (" + burgerNr + ") => " + rutsjebane.toString());
+            int burgerNummer = rutsjebane.leggTilHamburger();
+            System.out.println("Kokk" + kokkNummer + " legger på hamburger  (" + burgerNummer + ") => " + rutsjebane.toString());
             rutsjebane.notifyAll();
         }
     }

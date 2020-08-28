@@ -6,9 +6,9 @@ public class Servitoer extends Thread {
     int servitoeNummer;
     Random random = new Random();
 
-    public Servitoer(Rutsjebane rutsjebane, int nummer) {
+    public Servitoer(Rutsjebane rutsjebane, int servitoeNummer) {
         this.rutsjebane = rutsjebane;
-        this.servitoeNummer = nummer;
+        this.servitoeNummer = servitoeNummer;
     }
 
     @Override
@@ -31,8 +31,8 @@ public class Servitoer extends Thread {
             while (rutsjebane.erTom()) {
                 rutsjebane.wait();
             }
-            int burgerNr = rutsjebane.taUtHamburger();
-            System.out.println("Servitør" + servitoeNummer + " tar av hamburger (" + burgerNr + ") <= " + rutsjebane.toString());
+            int burgerNummer = rutsjebane.taUtHamburger();
+            System.out.println("Servitør" + servitoeNummer + " tar av hamburger (" + burgerNummer + ") <= " + rutsjebane.toString());
             rutsjebane.notifyAll();
         }
     }

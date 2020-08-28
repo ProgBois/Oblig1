@@ -5,12 +5,12 @@ public class Rutsjebane {
 
     LinkedList<Integer> rutsjebane = new LinkedList<>();
 
-    private int burgerNr = 1;
+    private int burger = 1;
 
     public int leggTilHamburger() {
-        rutsjebane.add(burgerNr);
-        burgerNr++;
-        return burgerNr-1;
+        rutsjebane.add(burger);
+        burger++;
+        return burger-1;
     }
 
     public int taUtHamburger() {
@@ -27,14 +27,14 @@ public class Rutsjebane {
 
     @Override
     public String toString() {
-        String str2 = "[";
+        String str = "[";
         for (int i = 0; i < rutsjebane.size(); i++) {
             if (i == rutsjebane.size()-1) {
-                str2 += "(" + rutsjebane.toArray()[i] + ")";
+                str += "(" + rutsjebane.toArray()[i] + ")";
             } else {
-                str2 += "(" + rutsjebane.toArray()[i] + "), ";
+                str += "(" + rutsjebane.toArray()[i] + "), ";
             }
         }
-        return str2 + "]";
+        return str + "]";
     }
 }
