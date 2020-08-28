@@ -24,10 +24,10 @@ public class Servitoer extends Thread {
     public void taHamburger() throws InterruptedException {
         int tid = random.nextInt(4) + 2;
         sleep(tid * 1000);
+        if (rutsjebane.erTom()) {
+            System.out.println("### Servitør" + nummer + " vil ta en hamburger, men rutsjebanen er tom. Venter! ###");
+        }
         synchronized (rutsjebane) {
-            if (rutsjebane.erTom()) {
-                System.out.println("### Servitør" + nummer + " vil ta en hamburger, men rutsjebanen er tom. Venter! ###");
-            }
             while (rutsjebane.erTom()) {
                 rutsjebane.wait();
             }

@@ -24,10 +24,10 @@ public class Kokk extends Thread {
     public void leggTilHamburger() throws InterruptedException {
         int tid = random.nextInt(4) + 2;
         sleep(tid * 1000);
+        if (rutsjebane.erFull()) {
+            System.out.println("### Kokk" + nummer + " er klar med en hamburger, men rutsjebanen er full. Venter! ###");
+        }
         synchronized (rutsjebane) {
-            if (rutsjebane.erFull()) {
-                System.out.println("### Kokk" + nummer + " er klar med en hamburger, men rutsjebanen er full. Venter! ###");
-            }
             while (rutsjebane.erFull()) {
                 rutsjebane.wait();
             }
