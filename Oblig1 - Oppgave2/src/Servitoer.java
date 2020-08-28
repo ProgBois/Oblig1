@@ -32,7 +32,7 @@ public class Servitoer extends Thread {
                 rutsjebane.wait();
             }
             int burgerNr = rutsjebane.taUtHamburger();
-            System.out.println("Servitør" + nummer + " tar av hamburger " + burgerNr + rutsjebane.toString());
+            System.out.println("Servitør" + nummer + " tar av hamburger (" + burgerNr + ") <= " + rutsjebane.toString());
             rutsjebane.notifyAll();
         }
     }

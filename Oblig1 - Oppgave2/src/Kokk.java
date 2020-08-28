@@ -32,7 +32,7 @@ public class Kokk extends Thread {
                 rutsjebane.wait();
             }
             int burgerNr = rutsjebane.leggTilHamburger();
-            System.out.println("Kokk" + nummer + " legger på hamburger " + burgerNr + rutsjebane.toString());
+            System.out.println("Kokk" + nummer + " legger på hamburger  (" + burgerNr + ") => " + rutsjebane.toString());
             rutsjebane.notifyAll();
         }
     }

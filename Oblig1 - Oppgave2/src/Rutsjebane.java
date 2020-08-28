@@ -1,39 +1,40 @@
-import Koe.TabellKoe;
+
+import java.util.*;
 
 public class Rutsjebane {
 
-    private TabellKoe<Integer> bane = new TabellKoe<>(5); // Hamburger
+    LinkedList<Integer> bane = new LinkedList<>();
+
     private int burgerNr = 1;
 
     public int leggTilHamburger() {
-        bane.innKoe(burgerNr);
+        bane.add(burgerNr);
         burgerNr++;
         return burgerNr-1;
     }
 
     public int taUtHamburger() {
-        return bane.utKoe();
+        return bane.removeFirst();
     }
 
     public boolean erTom() {
-        return bane.erTom();
+        return bane.isEmpty();
     }
 
     public boolean erFull() {
-        return bane.antall() == 5;
+        return bane.size() == 5;
     }
 
     @Override
     public String toString() {
-
-        /*
-        StringBuilder baneTilstand = new StringBuilder();
-        for (int i = 0; i < bane.antall(); i++) {
-            baneTilstand.append("(").append(bane.getKoe()[i].toString()).append("), ");
+        String str2 = "[";
+        for (int i = 0; i < bane.size(); i++) {
+            if (i == bane.size()-1) {
+                str2 += "(" + bane.toArray()[i] + ")";
+            } else {
+                str2 += "(" + bane.toArray()[i] + "), ";
+            }
         }
-        return baneTilstand.toString();
-        */
-
-        return " ";
+        return str2 + "]";
     }
 }
